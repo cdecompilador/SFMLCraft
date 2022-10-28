@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include <SFML/OpenGL.hpp>
+#include "GL.h"
 
 using FloatVector = std::vector<GLfloat>;
 using IndexVector = std::vector<GLuint>;
@@ -11,6 +11,7 @@ using IndexVector = std::vector<GLuint>;
 struct Mesh
 {
     FloatVector vertexPositions;
+    FloatVector textureCoords;
     IndexVector indices;
 };
 

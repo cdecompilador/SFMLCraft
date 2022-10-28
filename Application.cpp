@@ -54,12 +54,12 @@ Application::handleEvents()
         case sf::Event::KeyPressed:
             switch (e.key.code)
             {
-                case sf::Keyboard::Escape:
-                    m_context.window.close();
-                    break;
+            case sf::Keyboard::Escape:
+                m_context.window.close();
+                break;
 
-                default:
-                    break;
+            default:
+                break;
             }
             break;
 

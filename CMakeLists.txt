@@ -56,7 +56,9 @@ add_executable(SFMLCraft
     Shaders/ShaderLoader.cpp
     Shaders/Shader.cpp
     Shaders/BasicShader.cpp
+    Texture/BasicTexture.cpp
     Util/FileUtil.cpp
+    Texture/BasicTexture.cpp
     Renderer/RenderMaster.cpp 
     Renderer/QuadRenderer.cpp
     Model.cpp 

@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "../Shaders/BasicShader.h"
+#include "../Texture/BasicTexture.h"
 #include "../Math.h"
 #include "../Model.h"
 
@@ -21,6 +22,7 @@ private:
     std::vector<Vector3> m_quads;
     Model m_quadModel;
     BasicShader m_shader;
+    BasicTexture m_texture;
 };
 
 #endif

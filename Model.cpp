@@ -16,6 +16,7 @@ Model::addData(const Mesh& mesh)
     genVAO();
 
     addVBO(3, mesh.vertexPositions);
+    addVBO(2, mesh.textureCoords);
     addEBO(mesh.indices);
 }
 

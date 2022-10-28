@@ -5,17 +5,24 @@
 
 QuadRenderer::QuadRenderer()
     : m_shader(BasicShader())
+    , m_texture(BasicTexture("Wall.jpg"))
 {
     m_quadModel.addData({
         {
-            -0.5f, -0.5f, 0.0f,
-            -0.5f,  0.5f, 0.0f,
              0.5f,  0.5f, 0.0f,
              0.5f, -0.5f, 0.0f,
+            -0.5f, -0.5f, 0.0f,
+            -0.5f,  0.5f, 0.0f,
         },
         {
-            0, 1, 2,
-            0, 2, 3
+            1.0f, 1.0f,
+            1.0f, 0.0f,
+            0.0f, 0.0f,
+            0.0f, 1.0f
+        },
+        {
+            0, 1, 3,
+            1, 2, 3
         }
     });
 }
