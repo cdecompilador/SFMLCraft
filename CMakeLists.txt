@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(SFML_test
+project(SFMLCraft
     LANGUAGES CXX
     VERSION 0.0.1
 )
@@ -49,7 +49,7 @@ add_subdirectory(third_party/glew-cmake EXCLUDE_FROM_ALL)
 
 # Declare main executable
 # file(GLOB_RECURSE CXX_SOURCES src/*.cpp)
-add_executable(SFML_test
+add_executable(SFMLCraft
     States/StatePlaying.cpp
     Application.cpp
     Context.cpp
@@ -63,7 +63,7 @@ add_executable(SFML_test
     Main.cpp)
 
 # Link the external dependencies to the game
-target_link_libraries(SFML_test
+target_link_libraries(SFMLCraft
     PRIVATE 
         sfml-graphics
         sfml-window
