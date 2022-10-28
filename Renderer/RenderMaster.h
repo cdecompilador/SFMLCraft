@@ -5,6 +5,7 @@
 
 #include "../Math.h"
 #include "../Config.h"
+#include "../Camera.h"
 #include "QuadRenderer.h"
 
 class RenderMaster
@@ -14,7 +15,7 @@ public:
     drawQuad(Vector3& position);
 
     void 
-    finishRender(sf::Window& window);
+    finishRender(sf::Window& window, const Camera& camera);
 private:
     QuadRenderer m_quadRenderer;
 };

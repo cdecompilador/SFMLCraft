@@ -6,8 +6,9 @@
 
 #include "Renderer/RenderMaster.h"
 #include "States/StateBase.h"
-
 #include "Context.h"
+#include "Camera.h"
+#include "Config.h"
 
 class Application
 {
@@ -40,8 +41,11 @@ private:
     std::vector<std::unique_ptr<StateBase>> m_states;
     Context m_context;
     RenderMaster m_masterRenderer;
+    Camera m_camera;
     const Config& m_config;
     bool m_isPopState = false;
+
+    float m_z = 0.0f;
 };
 
 #endif

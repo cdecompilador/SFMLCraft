@@ -32,4 +32,6 @@ Context::Context(const Config& config)
     }
 
     glViewport(0, 0, window.getSize().x, window.getSize().y);
+    // glEnable(GL_CULL_FACE);
+    // glCullFace(GL_CCW);
 }

@@ -61,6 +61,8 @@ add_executable(SFMLCraft
     Texture/BasicTexture.cpp
     Renderer/RenderMaster.cpp 
     Renderer/QuadRenderer.cpp
+    Camera.cpp
+    Math.cpp
     Model.cpp 
     Main.cpp)
 
@@ -75,8 +77,14 @@ target_link_libraries(SFMLCraft
 )
 
 # Set the out dir of the binary so it can access the assets by a symlink
-# add_custom_command(
-#     TARGET Mineclone PRE_BUILD COMMAND
-#     ${CMAKE_COMMAND} -E create_symlink
-#     ${CMAKE_SOURCE_DIR}/Assets ${CMAKE_BINARY_DIR}/Assets
-# )
+add_custom_command(
+    TARGET SFMLCraft PRE_BUILD COMMAND
+    ${CMAKE_COMMAND} -E create_symlink
+    ${CMAKE_SOURCE_DIR}/Assets ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Assets
+)
+# Set the out dir of the binary so it can access the assets by a symlink
+add_custom_command(
+    TARGET SFMLCraft PRE_BUILD COMMAND
+    ${CMAKE_COMMAND} -E create_symlink
+    ${CMAKE_SOURCE_DIR}/Shaders ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Shaders
+)

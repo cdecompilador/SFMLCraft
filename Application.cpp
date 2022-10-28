@@ -6,6 +6,7 @@
 
 Application::Application(const Config& config)
     : m_context(config)
+    , m_camera(config)
     , m_config(config)
 {
     pushState<StatePlaying>(*this, config);
@@ -23,11 +24,15 @@ Application::runLoop()
         auto deltaTime = dtTimer.restart();
         auto& state = *m_states.back();
 
+        Entity player({0, 0, m_z}, {0, 0, 0});
+        m_camera.hookEntity(player);
+        m_camera.update();
+
         state.handleInput();
         state.update(deltaTime.asSeconds());
 
         state.render(m_masterRenderer);
-        m_masterRenderer.finishRender(m_context.window);
+        m_masterRenderer.finishRender(m_context.window, m_camera);
 
         handleEvents();
         if (m_isPopState)
@@ -57,7 +62,12 @@ Application::handleEvents()
             case sf::Keyboard::Escape:
                 m_context.window.close();
                 break;
-
+            case sf::Keyboard::W:
+                m_z -= 0.1;
+                break;
+            case sf::Keyboard::S:
+                m_z += 0.1;
+                break;
             default:
                 break;
             }

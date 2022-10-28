@@ -1,4 +1,5 @@
 #include "QuadRenderer.h"
+
 #include "../GL.h"
 
 #include <iostream>
@@ -34,13 +35,13 @@ QuadRenderer::addQuad(const Vector3 position)
 }
 
 void
-QuadRenderer::renderQuads()
+QuadRenderer::renderQuads(const Camera& camera)
 {
     m_quadModel.bind();
     m_shader.useProgram();
     for (auto& quad : m_quads)
     {
-        m_shader.loadProjectionViewMatrix(Matrix4(1.0f));
+        m_shader.loadProjectionViewMatrix(camera.getProjectionViewMatrix());
         m_shader.loadModelMatrix(Matrix4(1.0f));
         gl::drawElements(m_quadModel.getIndicesCount());
     }

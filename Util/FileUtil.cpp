@@ -12,7 +12,7 @@ getFileContents(const std::string& filePath)
     std::ifstream inFile(filePath);
     if (!inFile.is_open())
     {
-        printf("File doesn't exist\n");
+        printf("File %s doesn't exist\n", filePath.c_str());
         throw std::runtime_error("Unable to open file: " + filePath);
     }
 

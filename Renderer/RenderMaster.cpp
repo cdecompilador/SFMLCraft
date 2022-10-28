@@ -9,12 +9,12 @@ RenderMaster::drawQuad(Vector3& position)
 }
 
 void
-RenderMaster::finishRender(sf::Window& window)
+RenderMaster::finishRender(sf::Window& window, const Camera& camera)
 {
     glClearColor(0.1f, 0.2f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    m_quadRenderer.renderQuads();
+    m_quadRenderer.renderQuads(camera);
 
     window.display();
 }
