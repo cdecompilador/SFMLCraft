@@ -6,7 +6,7 @@
 struct Entity
 {
     Entity()
-        : position(glm::vec3())
+        : position(Vector3(0.0f, 0.0f, 1.0f))
         , rotation(Vector3())
         , velocity(Vector3())
     {

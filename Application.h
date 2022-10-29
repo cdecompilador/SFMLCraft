@@ -9,6 +9,7 @@
 #include "Context.h"
 #include "Camera.h"
 #include "Config.h"
+#include "Input.h"
 
 class Application
 {
@@ -35,6 +36,18 @@ public:
     {
         return m_context.window;
     }
+
+    const Keyboard&
+    getKeyboard() const
+    {
+        return m_keyboard;
+    }
+
+    Camera&
+    getCamera()
+    {
+        return m_camera;
+    }
 private:
     void handleEvents();
 
@@ -42,10 +55,9 @@ private:
     Context m_context;
     RenderMaster m_masterRenderer;
     Camera m_camera;
+    Keyboard m_keyboard;
     const Config& m_config;
     bool m_isPopState = false;
-
-    float m_z = 0.0f;
 };
 
 #endif

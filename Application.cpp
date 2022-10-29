@@ -1,7 +1,5 @@
 #include "Application.h"
 
-#include <iostream>
-
 #include "States/StatePlaying.h"
 
 Application::Application(const Config& config)
@@ -24,8 +22,6 @@ Application::runLoop()
         auto deltaTime = dtTimer.restart();
         auto& state = *m_states.back();
 
-        Entity player({0, 0, m_z}, {0, 0, 0});
-        m_camera.hookEntity(player);
         m_camera.update();
 
         state.handleInput();
@@ -49,7 +45,9 @@ Application::handleEvents()
     sf::Event e;
     while (m_context.window.pollEvent(e))
     {
+        m_keyboard.update(e);
         m_states.back()->handleEvent(e);
+
         switch (e.type)
         {
         case sf::Event::Closed:
@@ -61,12 +59,6 @@ Application::handleEvents()
             {
             case sf::Keyboard::Escape:
                 m_context.window.close();
-                break;
-            case sf::Keyboard::W:
-                m_z -= 0.1;
-                break;
-            case sf::Keyboard::S:
-                m_z += 0.1;
                 break;
             default:
                 break;

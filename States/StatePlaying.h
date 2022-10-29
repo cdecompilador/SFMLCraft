@@ -3,6 +3,9 @@
 
 #include "StateBase.h"
 #include "../Application.h"
+#include "../Entity.h"
+
+const float PLAYER_SPEED = 0.3f;
 
 namespace sf
 {
@@ -24,6 +27,8 @@ public:
     render(RenderMaster& renderer) override;
     void
     onOpen() override;
+private:
+    Entity m_player;
 };
 
 #endif

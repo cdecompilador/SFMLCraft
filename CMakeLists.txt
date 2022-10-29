@@ -61,6 +61,7 @@ add_executable(SFMLCraft
     Texture/BasicTexture.cpp
     Renderer/RenderMaster.cpp 
     Renderer/QuadRenderer.cpp
+    Input.cpp
     Camera.cpp
     Math.cpp
     Model.cpp 
