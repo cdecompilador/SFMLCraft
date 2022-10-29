@@ -23,6 +23,7 @@ StatePlaying::handleInput()
 void
 StatePlaying::update(float deltaTime)
 {
+    // Handle keyboard input
     if (m_pApplication->getKeyboard().isKeyDown(Key::W))
     {
         m_player.velocity.z -= PLAYER_SPEED;
@@ -40,8 +41,33 @@ StatePlaying::update(float deltaTime)
         m_player.velocity.x += PLAYER_SPEED;
     }
 
-    m_player.position += m_player.velocity * deltaTime;
+    // Handle mouse input
+    auto& window = m_pApplication->getWindow();
 
+    static auto lastMousePosition = sf::Mouse::getPosition(window);
+    auto change = sf::Mouse::getPosition() - lastMousePosition;
+
+    m_player.rotation.y += change.x * 0.05f;
+    m_player.rotation.x += change.y * 0.05f;
+
+    if (m_player.rotation.x > ANGLE_BOUND)
+        m_player.rotation.x = ANGLE_BOUND;
+    else if (m_player.rotation.x < -ANGLE_BOUND)
+        m_player.rotation.x = -ANGLE_BOUND;
+
+    if (m_player.rotation.y > 360)
+        m_player.rotation.y = 0;
+    else if (m_player.rotation.y < 0)
+        m_player.rotation.y = 360;
+
+    auto cx = static_cast<int>(window.getSize().x / 2);
+    auto cy = static_cast<int>(window.getSize().y / 2);
+
+    sf::Mouse::setPosition({cx, cy}, window);
+    lastMousePosition = sf::Mouse::getPosition();
+
+    // Apply differentials and reset
+    m_player.position += m_player.velocity * deltaTime;
     m_player.velocity = Vector3(0.0f);
 }
 

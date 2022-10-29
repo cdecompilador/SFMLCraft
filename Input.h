@@ -7,6 +7,8 @@
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/Keyboard.hpp>
 
+const float ANGLE_BOUND = 89.0f;
+
 enum class Key
 {
     A,
